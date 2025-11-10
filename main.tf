@@ -3,8 +3,9 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami           = "ami-0fb653ca2d3203ac1"
-  instance_type = "t3.micro"
+  ami             = "ami-0fb653ca2d3203ac1"
+  instance_type   = "t3.micro"
+  security_groups = [aws_security_group.instance.name]
 
   user_data = <<-EOF
               #!/bin/bash
